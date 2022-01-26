@@ -1,7 +1,7 @@
 name: actions workflow
 
 on: [push]
-
+#checkout actions runs get fetch and get checkout on your lastest commit
 jobs:
   run-github-actions:
     runs-on: ubuntu-latest
@@ -10,6 +10,12 @@ jobs:
         run: |
           pwd
           ls -a
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+          echo "${{ github.token }}"
+# git clone git@github:$GITHUB_REPOSITORY
+# git checkout $GITHUB_SHA
       - name: Checkout
         uses: actions/checkout@v1
       - name: List Files after checkout
